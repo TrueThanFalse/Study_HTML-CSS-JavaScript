@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        margin : block 태그만 적용 가능
+        margin : 값 => 상하좌우 전부 같은 값을 유지
+        margin : 값1, 값2 => 상/하:값1, 좌/우:값2
+        margin : 값1, 값2, 값3 => 상:값1 좌/우:값2 하:값3
+        margin : 값1, 값2, 값3, 값4 => 상 우 하 좌 (시계방향)
+        margin 뿐만 아니라 상하좌우를 설정하는 값은 모두 똑같은 성질
+        */
+        .container{
+            /* magin을 활용하여 가운데정렬 */
+            /* magin auto : 마진을 반반으로 나누어서 자동으로 설정 */
+            margin: auto;
+            width: 300px;
+            border: 1px solid black;
+            text-align: center;
+        }
+        .top, .bt{
+            border: 3px solid black;
+            width: 90%;
+            height: 50px;
+            margin: 10px auto;
+            line-height: 50px;
+            font-size: 2em;
+            font-weight: 700;
+
+        }
+        .mid{
+            border: 3px solid black;
+            width: 90%;
+            height: 250px;
+            margin: 10px auto;
+            position: relative;
+        }
+        .red, .green, .blue{
+            width: 100px;
+            height: 100px;
+            box-shadow: 5px, 5px, 5px, white;
+        }
+        .red{
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            background-color: red;
+            z-index: 10;
+        }
+        .green{
+            position: absolute;
+            top: 80px;
+            left: 80px;
+            background-color: green;
+            z-index: 5;
+        }
+        .blue{
+            position: absolute;
+            top: 120px;
+            left: 120px;
+            background-color: blue;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top">텍스트</div>
+        <div class="mid">
+            <div class="red"></div>
+            <div class="green"></div>
+            <div class="blue"></div>
+        </div>
+        <div class="bt">텍스트</div>
+    </div>
+</body>
+</html>

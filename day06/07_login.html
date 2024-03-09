@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #03c75a;
+        }
+        .box{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 300px;
+            height: 250px;
+            border-radius: 10px;
+            background-color: yellow;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .id, .pw, .bun{
+            width: 250px;
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+        .bun{
+            background-color: #03c75a;
+        }
+        a{
+            font-size: 10px;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" class="box">
+        <input type="text" name="id" id="" class="id" placeholder="아이디">
+        <input type="password" name="pw" id="" class="pw" placeholder="비밀번호">
+        <input type="submit" class="bun" id="" value="로그인">
+        <a href="https://www.naver.com" target="_blank">비밀번호를 잊어버리셨나요?</a>
+    </form>
+</body>
+</html>

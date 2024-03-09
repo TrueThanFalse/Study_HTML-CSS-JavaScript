@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 새로고침 : window.location.reload(); -->
+    <h1>
+    <button type="button" onclick="comNum()">랜덤 숫자 생성</button>
+    <button type="button" onclick="window.location.reload()">다시 시도(새로고침)</button>
+    </h1>
+    <h3 id="printMsg"></h3>
+    <h1>
+        <input type="number" name="" id="myGuess" max="99" min="0">
+        <button type="button" onclick="compareNum()">정답!</button>
+    </h1>
+    <h3 id="result"></h3>
+
+    <script>
+        let computerNum = 0;
+        let count = 0;
+
+        function comNum(){
+            computerNum = Math.floor(Math.random()*99)+1;
+            document.getElementById('printMsg').innerText =
+            `컴퓨터가 랜덤수(1~99)를 생성했습니다.`;
+            console.log(computerNum);
+        }
+
+        function compareNum(){
+            let str = '';
+            // 사용자 수 입력 받기
+            let myNum = Number(document.getElementById('myGuess').value);
+            count++;
+            
+            if(myNum > 0 && myNum < 100){
+                if(computerNum == myNum){
+                    str = `시도횟수 : ${count}, 정답입니다. 컴퓨터 숫자는 '${computerNum}' 였습니다.`;
+                }else if(computerNum > myNum){
+                    str = `시도횟수 : ${count}, UP!!`;
+                }else {
+                    str = `시도횟수 : ${count}, Down!!`;
+                }
+            }else{
+                str = '1~99까지의 숫자만 입력 가능합니다.'
+            }
+
+            document.getElementById('result').innerText = str;
+        }
+    </script>
+</body>
+</html>

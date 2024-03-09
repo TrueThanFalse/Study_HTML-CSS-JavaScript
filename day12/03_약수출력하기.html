@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        약수 출력하기 (1~100까지 중 입력한 숫자의 약수를 출력)
+    </h1>
+    <input type="text" id="num">
+    <button type="button" id="btn">약수출력</button>
+    <h3 id="result">
+        약수 값 출력 / 개수<br>
+    </h3>
+
+    <script>
+        document.getElementById(`btn`).addEventListener(`click`, ()=>{
+            let str = '약수 값 출력 / 개수<br>';
+            let count = 0;
+            let num = document.getElementById(`num`).value;
+            if(num<1||num>100){
+                alert('1~100까지 입력할 수 있습니다.')
+                document.getElementById(`num`).value = '';
+                return;
+            }
+            for(let i=1; i<=num; i++){
+                if(num % i == 0){
+                    str += `${i} `;
+                    count++;
+                    if(i == num){
+                        break;
+                    }
+                }
+            }
+            str += `/ ${count}`;
+            document.getElementById(`result`).innerHTML = str;
+        });
+
+        // Solution
+        // h3 태그 값을 저장
+        let r = document.getAnimations(`result`).innerText;
+        // 파라미터로 받은 수의 약수를 구하는 function
+        function multiple(num){
+            // 약수 처리
+            let str = `${r}<br>`; // h3에 원래 있던 값 추가
+            let conut = 0;
+            for(let i=1; i<=num; i++){
+                if(num % i == 0){
+                    str += `${i} `;
+                    count++;
+                }
+            }
+            return `${str}<br> 총 ${count}개`;
+        }
+        document.getElementById(`btn`).addEventListener(`click`, ()=>{
+            let num = document.getElementById(`num`).value;
+            let result = multiple(num);
+            document.getElementById(`result`).innerHTML = result;
+        })
+    </script>
+</body>
+</html>

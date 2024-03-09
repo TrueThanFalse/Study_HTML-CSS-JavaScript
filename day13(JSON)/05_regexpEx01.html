@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style id="style">
+        .green{
+            color: green;
+        }
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        input에 파일명.확장자 형태로 입력하여 전송 버튼을 클릭하면
+        이미지 파일인지 검사
+        이미지 파일이면 '정상 파일 입니다.' (green)
+        아니면 '이미지 파일만 가능합니다.' (red)
+        이미지 파일은 jpg(JPG), png(PNG), gif(GIF), jpeg(JPEG)만 가능
+        단, 대문자로 기입해도 판단이 가능해야 함
+    -->
+
+    파일명 : <input type="text" id="text">
+    <button type="button" onclick="run()" id="btn">전송</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function run(){
+            let text = document.getElementById('text').value;
+            let fileExtension = text.slice(text.lastIndexOf('.'));
+            
+            if((/\.(jpg|jpeg|png|gif)$/i).test(fileExtension)){
+                let h3Style = 'h3{color: green;}';
+                document.getElementById('style').innerHTML = h3Style;
+                document.getElementById('result').innerText = '정상 파일입니다.';
+            }else{
+                let h3Style = 'h3{color: red;}';
+                document.getElementById('style').innerHTML = h3Style;
+                document.getElementById('result').innerText = '이미지 파일만 가능합니다.';                
+            }
+        }
+
+        // 또 다른 방법
+        function imageFile(image){
+            if(image.match(/(jpg|jpeg|gif|png)$/i)){
+                return true;
+            }
+            return false;
+
+            // let imageFile = image.toLowerCase(); // 소문자 변환
+            // if(imageFile.endWith('png')){
+            //     return true;
+            // }else if(imageFile.endWith('jpg')){
+            //     return true;
+            // }else if(imageFile.endWith('jpeg')){
+            //     return true;
+            // }else if(imageFile.endWith('gif')){
+            //     return true;
+            // }else{
+            //     return false;
+            // }
+        }
+
+        document.getElementById('btn').addEventListener('click', ()=>{
+            let fileName = document.getElementById('text').value;
+            let imgTrue = `<span class="green">정상파일 입니다.</span>`;
+            let imgFalse = `<span class="red">이미지 파일만 가능합니다.</span>`;
+            document.getElementById('result').innerHTML =
+            imageFile(fileName) ? imgTrue : imgFalse;
+        })
+    </script>
+</body>
+</html>

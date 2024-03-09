@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map 예제</title>
+</head>
+<body>
+    <!-- 
+        input 2개 생성 -> 과목, 점수
+        추가 버튼을 클릭하면 map에 추가
+        출력 버튼을 클릭하면 map을 출력 : ul / li로 출력
+        결과 버튼을 클릭하면 합계, 평균, 합격여부(60점 이상 합격) 출력(h3)
+    -->
+
+    <form action="">
+        <div>
+            과목 : <input type="text" id="subject"><br>
+            점수 : <input type="text" id="score"><br>
+            <br>
+        </div>
+        <div>
+            <button type="button" onclick="add()">추가</button>
+            <button type="button" id="printBtn">출력</button>
+            <button type="button" id="textBtn">결과</button>
+        </div>
+        <div>
+            <ul id="ul"></ul>
+        </div>
+        <div>
+            <h3 id="text"></h3>
+        </div>
+    </form>
+
+    <script>
+        const myMap = new Map();
+        const subject = document.getElementById('subject');
+        const score = document.getElementById('score');
+        const result = document.getElementById('result');
+        const text = document.getElementById('text');
+        const printBtn = document.getElementById('printBtn');
+        const textBtn = document.getElementById('textBtn');
+        let sum = 0;
+        let avg = 0;
+        
+        function add(){
+            let subVal = subject.value;
+            let numVal = Number(score.value);
+            myMap.set(subVal, numVal);
+            sum += numVal;
+            console.log(myMap);
+            console.log(sum);
+            subject.value = '';
+            score.value = '';
+        }
+
+        printBtn.addEventListener('click', ()=>{
+            let str = '';
+            myMap.forEach(function(v,k){
+                str += `<li>${k} : ${v}</li>`;
+            })
+            ul.innerHTML = str;
+        })
+
+        textBtn.addEventListener('click', function(){
+            let avg = (sum / myMap.size);
+            let pass = (avg >= 60) ? '합격' : '탈락';
+            text.innerText = `합계:${sum}, 평균:${avg}, 합격여부:${pass}`;
+        })
+    </script>
+</body>
+</html>

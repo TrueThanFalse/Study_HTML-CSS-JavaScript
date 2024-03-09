@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>select 태그</title>
+</head>
+<body>
+    <!-- 
+        select 태그 : 제시된 항목중 하나를 선택하게 하는 태그 -> 콤보박스 / 드롭다운박스와 비슷한 형태
+        - option 태그를 넣어서 목록을 구성 할 수 있음
+        - <option value="전송값">목록명</option>
+        - value 값이 없으면 공백으로 전송함
+        - seleted : 기본 선택값을 지정하는 속성
+        - disabled : 비활성화(선택 금지) 속성
+    -->
+    <!-- *(곱하기)를 활용하면 한번에 여러개의 태그를 생성 가능 -->
+    <form action="">
+        <select name="year" id="">
+            <option value="">출생년도</option>
+            <option value="2001">2001</option>
+            <option value="2000">2000</option>
+            <option value="1999">1999</option>
+            <option value="1998">1998</option>
+            <option value="1997">1997</option>
+            <option value="1996">1996</option>
+            <option value="1995">1995</option>
+        </select>
+        <button>전송</button>
+    </form>
+
+    <!-- 문제. 통신사 선택 목록 만들기 -->
+    <form action="">
+        <label for="cp">통신사 선택</label>
+        <select name="company" id="cp">
+            <option value="SKT" selected>SKT</option>
+            <option value="KT">KT</option>
+            <option value="LG">LG</option>
+            <option value="etc.">기타</option>
+            <option value="알뜰폰" disabled>알뜰폰</option>
+        </select>
+        <button>전송</button>
+    </form>
+</body>
+</html>

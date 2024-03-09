@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Type</title>
+</head>
+<body>
+    <h1>
+        Map => key / value 형태의 데이터를 한개의 배열로 만들어서 다시 배열에 저장함
+    </h1>    
+    <ul>
+        <li>
+            선언 및 초기화 : new Map(), new Map([['key','value'],['key','value'],...])
+        </li>
+        <li>
+            기본적으로 중첩 구조를 가지고 있기 때문에 key 중복 확인이 필수임
+        </li>
+        <li>
+            key를 식별자로 활용하므로 get(keyName), set(keyName, value) 메서드를 사용 가능
+        </li>
+        <li>
+            2차원 배열 형태와 비슷한 구조임
+        </li>
+        <li>
+            key 타입은 문자로 하는 것이 원칙(String) => key 타입이 여러개면 관리가 어려워지기 때문
+        </li>
+        <li>
+            get(keyName) : key에 해당되는 value 값을 return
+        </li>
+        <li>
+            set(keyName, value) : key에 해당하는 value를 변경 / add 따로 없이 set으로 데이터를 추가함
+        </li>
+        <li>
+            delete(key), has(key), forEach(), keys(), entries(), values(), clear(), size 모두 가능
+        </li>
+    </ul>
+
+    <script>
+        const myMap = new Map();
+        myMap.set('html', 87);
+        myMap.set('css', 67);
+        myMap.set('js', 78);
+        console.log(myMap);
+        console.log(myMap.get('js'));
+
+        myMap.delete('css');
+        console.log(myMap);
+
+        myMap.forEach(function(v,i,s){
+            console.log(i,v,s);
+        })
+
+        console.log(myMap.entries());
+        console.log(myMap.keys());
+        console.log(myMap.values());
+
+        // myMap.entries()를 이용하여 map의 key, value를 콘솔에 출력해보기
+        for(const key of myMap.entries()){
+            // console.log(key);
+            for(const elem of key){
+                console.log(elem);
+            }
+        }
+
+        myMap.clear();
+        console.log(myMap);
+    </script>
+</body>
+</html>

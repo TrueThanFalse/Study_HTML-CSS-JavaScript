@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 순환 탐색 메서드</title>
+</head>
+<body>
+    <h1>
+        배열의 순환할 수 있는 구조를 이용하여 사용하는 메서드
+    </h1>
+    <ul>
+        <li>
+            array.reduce(callback function(total, value, index, self),[init value])
+            => 연산의 누적값을 return
+        </li>
+        <li>
+            array.reduceRight() : 배열의 우측에서 좌측방향으로 대입
+        </li>
+        <li>
+            array.every(callback function(value, index, self)) :
+            콜백 함수의 return 조건에 모든 배열이 만족하면 true, 아니면 false
+            => and 개념
+        </li>
+        <li>
+            array.some(callback function(value, index, self)) :
+            콜백 함수의 return 조건에 배열이 만족하면 true, 아니면 false
+            => or 개념
+        </li>
+        <li>
+            array.indexOf('str',[start index]) :
+            해당 문자열이 존재하는 배열의 index를 return
+        </li>
+        <li>
+            array.lastIndexOf('str',[start index]) : 뒤에서부터 탐색
+        </li>
+        <li>
+            array.find(callback function(value, index, self)) :
+            검색 조건에 만족하는 첫번째 값 return
+        </li>
+        <li>
+            array.findIndex(callback function(value, index, self)) :
+            검색 조건에 만족하는 첫번째 값의 index를 return
+        </li>
+        <li>
+            array.from('객체') : 순서가 있거나, 순환 구조를 갖고 있는 객체를 배열로 변환
+        </li>
+        <li>
+            array.keys() : 배열이 사용중인 key(식별자(index))를 검색하여 새로운 배열로 return
+                => Object는 적용 안됨
+        </li>
+        <li>
+            array.entries() : index : value의 구조로 값을 만들어 새로운 배열에 담아 return
+        </li>
+        <li>
+            array.includes('찾고싶은 값') : 배열에 찾는 값이 있으면 true, 없으면 false
+        </li>
+    </ul>
+
+    <script>
+        const fruit = [`apple`, 'orange', 'apple', 'mango'];
+        // fruit의 3번째에 위치한 apple의 l을 추출
+        let keyword = 'l';
+        // 3번째 위치에 있는 apple 추출(위치)
+        let key = fruit[fruit.indexOf('apple',1)].indexOf(keyword);
+        console.log(key);
+        
+        const f = fruit.entries();
+        console.log(f);
+
+        for(const e of f){
+            console.log(e);
+        }
+
+        const arr = [2,12,6,46];
+
+        const sum = arr.reduce(function(total, value){
+            return total+value;
+        });
+        console.log(sum);
+
+        const fi = arr.find((e)=>{
+            return e>10;
+        })
+        console.log(fi);
+
+        const fi2 = arr.find(function(e){
+            return e>20;
+        })
+        console.log(fi2);
+
+        const even = arr.every((e)=>{
+            return e % 2 == 0;
+        })
+        console.log(even);
+
+        const even2 = arr.every((e)=>e%2==0); // 처리되는 return이 1개일 때만 가능한 구문
+        console.log(even2);
+    </script>
+</body>
+</html>

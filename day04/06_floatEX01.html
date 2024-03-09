@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제</title>
+    <!-- p-box 안에 box 3개 구성 -->
+    <!-- 해당 3개의 박스가 화면을 꽉 채우도록 동일한 크기로 구성 -->
+    <style>
+        .pbox{
+            border: 1px solid black;
+            width: 500px;
+        }
+        .pbox>div{
+            float: left;
+            width: calc(100% / 3);
+            /* 자식 box의 100% 기준은 부모 box의 width 크기 */
+            /* calc() 연산자를 붙여서 쓰면 옳바른 작동을 안할 수도 있음 */
+            height: 100px;
+        }
+        .box1{
+            background-color: aqua;
+        }
+        .box2{
+            background-color: yellowgreen;
+        }
+        .box3{
+            background-color: blueviolet;
+        }
+        .pbox::after{
+            /* 부모 pbox가 높이를 인식할 수 있도록 설정 */
+            content: "";
+            clear: both;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="pbox">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+    </div>
+</body>
+</html>

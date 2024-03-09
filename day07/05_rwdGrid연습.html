@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header{
+            width: 100%;
+            height: 50px;
+        }
+        .main-img{
+            width: 100%;
+            height: 300px;
+            background-image: url(../image/dog1.jpg);
+            background-size: 100% 100%;
+        }
+        .text{
+            width: 100%;
+            height: 200px;
+        }
+        .image1{
+            width: 100%;
+            height: 100px;
+            background-image: url(../image/dog2.jpg);
+            background-size: 100% 100%;
+        }
+        .image2{
+            width: 50%;
+            height: 100px;
+            background-image: url(../image/dog3.jpg);
+            background-size: 100% 100%;
+            float: left;
+            position: relative;
+        }
+        .image3{
+            width: 50%;
+            height: 100px;
+            background-image: url(../image/dog4.jpg);
+            background-size: 100% 100%;
+            float: left;
+        }
+        .image3::after{
+            clear: both;
+        }
+        a{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+            font-weight: 700;
+            color: white;
+            border: 5px solid white;
+        }
+        @media screen and (min-width:800px) {
+            .image1{
+                width: 50%;
+                height: 200px;
+                float: left;
+            }
+            .image2{
+                width: 50%;
+                height: 100px;
+                float: right;
+            }
+            .image3{
+                width: 50%;
+                height: 100px;
+                float: right;
+            }
+        }
+        @media screen and (min-width:1200px) {
+            .main-img{
+                width: 50%;
+                height: 500px;
+                float: left;
+            }
+            .text{
+                width: 50%;
+                height: 250px;
+                float: right;
+            }
+            .image1{
+                width: 25%;
+                height: 250px;
+                float: left;
+            }
+            .image2{
+                width: 25%;
+                height: 125px;
+                float: right;
+            }
+            .image3{
+                width: 25%;
+                height: 125px;
+                float: right;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header" id="top">IN'O</div>
+    <div class="main-img"></div>
+    <div class="text">
+        Portfolio<br>
+        Make Hardware Soft<br>
+        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also
+    </div>
+    <div class="image1"></div>
+    <div class="image2">
+        <a href="#top">VIEW MORE</a>
+    </div>
+    <div class="image3"></div>
+</body>
+</html>

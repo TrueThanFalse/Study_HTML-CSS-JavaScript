@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        h1{
+            width: 150px;
+            height: 50px;
+            line-height: 50px;
+            border: 5px solid black;
+        }
+        .text{
+            height: 50px;
+            line-height: 50px;
+        }
+        button{
+            text-decoration: none;
+            margin: 15px;
+            font-size: 20px;
+            color: black;
+            border: 1px solid black;
+            background-color: white;
+            border-radius: 10px;
+            width: 100px;
+            height: 50px;
+        }
+        button:hover{
+            color: red;
+            cursor: pointer;
+            font-size: 30px
+        }
+        .imageBox{
+            margin: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><div>Travel</div></h1>
+        <div class="text">
+            <button type="button" id="home">Home</button>
+            <button type="button" id="seoul">Seoul</button>
+            <button type="button" id="tokyo">Tokyo</button>
+            <button type="button" id="paris">Paris</button>
+        </div>
+        <div class="imageBox">
+            <img src="../image/Home.jpg" alt="" width="800px" height="500px" id="img">
+        </div>
+    </div>
+
+    <script>
+        const home = document.getElementById('home');
+        const seoul = document.getElementById('seoul');
+        const tokyo = document.getElementById('tokyo');
+        const paris = document.getElementById('paris');
+
+        home.addEventListener('click',()=>{
+            document.getElementById('img').src = "../image/Home.jpg";
+        })
+        seoul.addEventListener('click',()=>{
+            document.getElementById('img').src = "../image/seoul.jpg";
+        })
+        tokyo.addEventListener('click',()=>{
+            document.getElementById('img').src = "../image/tokyo.jpg";
+        })
+        paris.addEventListener('click',()=>{
+            document.getElementById('img').src = "../image/paris.jpg";
+        })
+    </script>
+</body>
+</html>

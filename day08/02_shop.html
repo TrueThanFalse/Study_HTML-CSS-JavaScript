@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url(reset.css);
+        @font-face {
+            font-family: Hi_Melody;
+            src: url(../font/Hi_Melody/HiMelody-Regular.ttf);
+        }
+        body{
+            font-family: Hi_Melody;
+            min-width: 600px;
+            /* 컨텐츠 보호를 위해 min-width 활용 */
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .navbar{
+            height: 60px;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .navbar>a{
+            line-height: 60px;
+            font-size: 30px;
+            font-weight: 700;
+        }
+        .navbar>ul{
+            display: flex;
+            justify-content: space-around;
+        }
+        .navbar>ul>li{
+            margin: auto 10px;
+        }
+        .main-img{
+            width: 100%;
+            height: 400px;
+            background-image: url(../image/back.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 20px 0;
+        }
+        .container>h1{
+            font-size: 30px;
+            text-align: center;
+            margin: 50px auto;
+            color: gray;
+        }
+        .product{
+            /* 그림 사이즈, 230 + 마진 20 */
+            /* 230*3 + 120 = 810 */
+            width: 850px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .product>a{
+            margin: 0 20px;
+        }
+        .product>a>div>img{
+            width: 230px;
+            height: 230px;            
+        }
+        .product ul{
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+        .product ul li{
+            margin: 15px;
+            font-size: 25px;
+        }
+        footer{
+            text-align: center;
+            margin: 30px;
+            margin-bottom: 50;
+        }
+        .footer>i{
+            font-size: 30px;
+            padding: 0 30px;
+        }
+        .product>a{
+            position: relative;
+        }
+        .product>a>div>.text{
+            position: absolute;
+            top: 190px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            color: red;
+            display: none;
+            /* display: none => 화면에서 사라짐 */
+        }
+        .product>a>div>img:hover ~.text{
+            /* ~(물결표) : 물결표 이후에 있는 요소가 반응해라 */
+            display: block;
+            /* .text 클래스가 display:none에서 block이 되면서 화면에 다시 표기됨 */
+        }
+        .product>a>div>img:hover{
+            transform: scale(1.1);
+        }
+        .product>a>div>img{
+            transition: 0.5s;
+        }
+        .product>a>div{
+            width: 230px;
+            height: 230px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="navbar">
+            <a href="#">▦ SIMPLE SHOP</a>
+            <ul>
+                <li><a href="#">Content</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Cart</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </header>
+        <!-- 메인 이미지 -->
+        <div class="main-img"></div>
+        <!-- 중간 제목 -->
+        <h1>Our New Product</h1>
+        <!-- 상품 상세 내역 -->
+        <div class="product">
+            <!-- 상품 정보는 3*3 -->
+            <a href="#">
+                <div>
+                    <img src="../image/sunglasses.jpg" alt="">
+                    <div class="text">세일 상품</div>
+                </div>
+                <ul>
+                    <li>sunglasses</li>
+                    <li>49,000</li>
+                </ul>
+            </a>
+            <!-- 8개 복사 -->
+            <a href="#">
+                <div>
+                    <img src="../image/sunglasses.jpg" alt="">
+                    <div class="text">세일 상품</div>
+                </div>
+                <ul>
+                    <li>sunglasses</li>
+                    <li>49,000</li>
+                </ul>
+            </a>
+            <a href="#">
+                <div>
+                    <img src="../image/sunglasses.jpg" alt="">
+                    <div class="text">세일 상품</div>
+                </div>
+                <ul>
+                    <li>sunglasses</li>
+                    <li>49,000</li>
+                </ul>
+            </a>            
+            <a href="#">
+                <div>
+                    <img src="../image/sunglasses.jpg" alt="">
+                </div>
+                <ul>
+                    <li>sunglasses</li>
+                    <li>49,000</li>
+                </ul>
+            </a>
+            <a href="#">
+                <div>
+                    <img src="../image/sunglasses.jpg" alt="">
+                </div>
+                <ul>
+                    <li>sunglasses</li>
+                    <li>49,000</li>
+                </ul>
+            </a>
+            <a href="#">
+                <div>
+                    <img src="../image/sunglasses.jpg" alt="">
+                </div>
+                <ul>
+                    <li>sunglasses</li>
+                    <li>49,000</li>
+                </ul>
+            </a>
+            <a href="#">
+                <div>
+                    <img src="../image/sunglasses.jpg" alt="">
+                </div>
+                <ul>
+                    <li>sunglasses</li>
+                    <li>49,000</li>
+                </ul>
+            </a>
+            <a href="#">
+                <div>
+                    <img src="../image/sunglasses.jpg" alt="">
+                </div>
+                <ul>
+                    <li>sunglasses</li>
+                    <li>49,000</li>
+                </ul>
+            </a>
+            <a href="#">
+                <div>
+                    <img src="../image/sunglasses.jpg" alt="">
+                </div>
+                <ul>
+                    <li>sunglasses</li>
+                    <li>49,000</li>
+                </ul>
+            </a>
+        </div>
+        <footer>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </footer>
+    </div>
+</body>
+</html>

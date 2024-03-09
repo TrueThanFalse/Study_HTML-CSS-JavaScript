@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        window 메서드 종류
+    </h1>
+    <ul>
+        <li>
+            window.open('url','windowName','option(size, scroll,...)') :
+        </li>
+        <li>
+            alert(); : 경고창 / prompt(); : input 포함 창 / confirm(); : 확인&취소 창
+        </li>
+        <li>
+            setInterval(function, millisecond);
+            일정 간격 지속적으로 실행문을 실행시킬 때 사용
+        </li>
+        <li>
+            setTimeout(function, millisecond);
+            일정 시간 동안 실행 시킬 때 사용
+        </li>
+    </ul>
+
+    <button type="button" onclick="openWindow()">열기</button>
+    <button type="button" onclick="closeWindow()">닫기</button>
+    <button type="button" onclick="alertEx()">alert</button>
+    <button type="button" onclick="promptEx()">prompt</button>
+    <button type="button" onclick="confirmEx()">confirm</button>
+    <h3 id="msg"></h3>
+
+    <a href="06_setTimeOut.html">06_setTimeOut.html</a>
+    <script>
+        let myWindow;
+        function openWindow() {
+            // myWindow에 저장하지 않고 바로 open 가능
+            // but 변수에 담은 이유 : 닫기 버튼으로 닫는 기능을 실행시키기 위해서
+            myWindow = window.open('02_구구단 게임.html','myWindow','width=400, height=500');
+        }
+
+        function closeWindow() {
+            if(myWindow)
+            myWindow.close(); 
+        }
+
+        function alertEx() {
+            alert('alert 연습!');
+        }
+
+        function promptEx() {
+            // 입력을 받아 저장할 변수가 필요함
+            let name = prompt('이름을 입력하세요.');
+            document.getElementById('msg').innerText = name;
+        }
+
+        function confirmEx(){
+            // 확인 : true 리턴, 취소 : false 리턴
+            let con = confirm('confirm 연습!');
+            if(con){
+                document.getElementById('msg').innerText = '확인 클릭';
+            }else{
+                document.getElementById('msg').innerText = '취소 클릭';
+            }
+        }
+    </script>
+</body>
+</html>

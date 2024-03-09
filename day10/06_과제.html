@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>데이터 리스트</h3>
+    <ol>
+        <li>이름</li>
+        <li>거주지</li>
+        <li>좋아하는 리스트 3가지
+            <ul>
+                <li>1.???</li>
+                <li>2.???</li>
+                <li>3.???</li>
+            </ul>
+        </li>
+        <li>이메일</li>
+        <li>지금 가장 원하는 것</li>
+    </ol>
+    <h3>리스트의 구조에 따라 JS 객체를 만들어보자</h3>
+    <form action="">
+        <ol>
+            <li>이름 : <input type="text" id="name"></li>
+            <li>거주지 : <input type="text" id="addr"></li>
+            <li>좋아하는 것 3가지
+                <ul>
+                    <li>List 1 : <input type="text" id="favor1"></li>
+                    <li>List 2 : <input type="text" id="favor2"></li>
+                    <li>List 3 : <input type="text" id="favor3"></li>
+                </ul>
+            </li>
+            <li>이메일 : <input type="email" id="email"></li>
+            <li>지금 가장 원하는 것 : <input type="text" id="wanna"></li>
+        </ol>
+        <button type="button" onclick="dataInput()">객체로 전송</button>
+    </form>
+
+    <!-- 테이블 생성 -->
+    <h3>전송 받은 데이터 출력 <button type="button" onclick="dataOutTable()">출력</button></h3>
+    <div id="table"></div>
+
+    <script>
+        function dataInput(){
+            const dataObj = {
+            name : document.getElementById(`name`).value,
+            addr : document.getElementById(`addr`).value,
+            favors : {
+                favor1 : document.getElementById(`favor1`).value,
+                favor2 : document.getElementById(`favor2`).value,
+                favor3 : document.getElementById(`favor3`).value,
+            },
+            email : document.getElementById(`email`).value,
+            wanna : document.getElementById(`wanna`).value
+            }
+            console.log(dataObj);
+        };
+
+        // 만들어진 객체를 테이블에 출력
+        function dataOutTable(){
+            let name = document.getElementById(`name`).value;
+            let addr = document.getElementById(`addr`).value;
+            let favor1 = document.getElementById(`favor1`).value;
+            let favor2 = document.getElementById(`favor2`).value;
+            let favor3 = document.getElementById(`favor3`).value;
+            let email = document.getElementById(`email`).value;
+            let wanna = document.getElementById(`wanna`).value;
+            
+            let table =
+            `<table border="1">
+                <tr>
+                    <th>이름</th>
+                    <td>${name}</td>
+                </tr>
+                <tr>
+                    <th>거주지</th>
+                    <td>${addr}</td>
+                </tr>
+                <tr>
+                    <th>좋아하는 List</th>
+                    <td>
+                        <ul>
+                            <li>${favor1}</li>
+                            <li>${favor2}</li>
+                            <li>${favor3}</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td>${email}</td>
+                </tr>
+                <tr>
+                    <th>소원</th>
+                    <td>${wanna}</td>
+                </tr>
+            </table>`;
+            document.getElementById(`table`).innerHTML = table;
+        }
+    </script>
+</body>
+</html>

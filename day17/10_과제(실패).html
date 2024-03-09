@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>여행 준비물 점검 목록</h2>    
+        <form action="">
+            <input type="text" id="inputName">
+            <button type="button" onclick="insertItem()">추가</button>
+        </form>
+        <div>
+            <ul id="itemList"></ul>
+        </div>
+    </div>
+    
+    <script>
+        const inputName = document.getElementById('inputName');
+        const itemList = document.getElementById('itemList');
+        let liArray = [];
+        let IndexNum = 0;
+        let itemListBtnGroup = itemList.getElementsByTagName('button');
+        
+        function insertItem(){
+            itemList.innerHTML = '';
+            liArray.push(`<li>${inputName.value}<button type="button" value="${IndexNum}">X</button></li>`);
+            IndexNum++;
+
+            let tmpStr = '';
+            for(let i=0; i<liArray.length; i++){
+                tmpStr += liArray[i];
+            }
+            itemList.innerHTML = tmpStr;
+
+            for(const button of itemListBtnGroup){
+                button.addEventListener('click', (e)=>{
+                    let index = e.target.value;
+                    liArray.splice(index, 1);
+
+                    let tmpStr = '';
+                    for(let i=0; i<liArray.length; i++){
+                    tmpStr += liArray[i];
+                    }
+                    itemList.innerHTML = tmpStr;
+                })
+            }
+        }
+    </script>
+</body>
+</html>

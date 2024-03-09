@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        가장 많이 다루는 데이터 타입 : String
+    </h1>
+    <ul>
+        <li>Java 에서의 String 메서드와 거의 유사함</li>
+        <li>문자열 데이터는 index(0부터 시작)를 가지고 있음</li>
+        <li>문자열 값 내에서 개행(br)하는 것을 추천하지 않음</li>
+        <li>new String(), 객체 타입으로 선언 가능하지만 추천하지 않음</li>
+        <li>length : 문자열의 총 길이</li>
+    </ul>
+    <ul>
+        <li>
+            추출 관련 메서드<br>
+            ● substring(startIndex, endIndex) : endIndex는 포함X<br>
+            ● slice(startIndex, endIndex) : endIndex는 포함X<br>
+            ● substr(startIndex, count) : count => 개수
+        </li>
+        <li>
+            문자 대체 관련 메서드 : replace(old, new) : 첫 매징되는 문자만 가능 (대소문자 구분함)
+        </li>
+        <li>
+            trim() : 양쪽 공백 제거
+        </li>
+        <li>
+            padStart(원하는 문자열 총 길이, 앞쪽 빈공간에 채울 문자) /<br>
+            padEnd(원하는 문자열 총 길이, 뒤쪽 빈공간에 채울 문자)<br>
+            str1 = '시'; / str2 = '010101-4';<br>
+            ****시 => str1.padStart(5,`*`); / 010101-4****** => str2.padEnd(14,`*`);
+        </li>
+        <li>
+            charAt(index) => return이 String임, indexOf() 가능
+        </li>
+        <li>
+            startWith('str') / endWith('str')<br>
+            해당 문자열 앞/뒤에 str이 존재하는지 확인하는 메서드<br>
+            return이 true / false 로 리턴됨
+        </li>
+    </ul>
+
+    <script>
+        let str1 = 'Apple, Banana, Orange';
+        console.log(str1.slice(0,5)); // 0번지부터 5번지까지 (마지막 번지 포함X)
+        // slice는 substring과 사용 방법이 같음
+        // slice의 장점 : 문자열의 뒤에서부터 추출이 가능
+        // index에 -(마이너스)를 입력하면 뒤에서부터 추출 가능
+        console.log(str1.slice(-6));
+        console.log('----------');
+
+        // substring(startIndex, endIndex); : endIndex는 포함X
+        // substr(startIndex, count);
+
+        let str2 = "Hello java World~! java";
+        let newStr2 = str2.replace('java','javascript'); // 첫 매칭만 변경됨
+        console.log(newStr2);
+        // 정규식 패턴을 사용하여 전체를 변경 가능
+        // /값/옵션 => /text/i(대소문자 구분 없이), /text/g(전역검색)
+        newStr2 = str2.replace(/java/g, 'javascript'); // 전체 검색
+        console.log(newStr2);
+        newStr2 = str2.replace(/JAVA/ig, 'javascript'); // 대소문자 구분 없이 전체 검색
+        console.log(newStr2);
+        console.log('----------');
+
+        let padText = `abc`;
+        console.log(padText.padEnd(20,`-`));
+        // 010101-1234123 => 010101-1******
+        let rNum = `010101-1234123`;
+        let rNumLength = rNum.length;
+        console.log(rNum.slice(0,8).padEnd(rNumLength,`*`));
+
+        let id = rNum.charAt(rNum.indexOf('-')+1);
+        console.log(id=='1'||id=='3' ? '남' : '여'); // 삼항연산자
+        // JS는 문자도 equals가 아닌 = 기호로 비교 가능
+        // == 같다, === 같다(값+타입)
+
+        // let tmp = rNum.substr(0,9);
+        // tmp = tmp.padEnd(14,'*');
+        // console.log(tmp);
+
+        console.log('----------');
+        // 파일명 추출 방법
+        let fullFileName = '20231024_javascript.string_method.html';
+        // 파일명 추출
+        let file = fullFileName.slice(fullFileName.indexOf('_')+1
+        ,fullFileName.lastIndexOf('.'));
+        console.log(file);
+        // 작성일자 추출
+        let dateNum = fullFileName.slice(0,fullFileName.indexOf('_'));
+        console.log(dateNum);
+        // 확장자 추출
+        let suffix = fullFileName.slice(fullFileName.lastIndexOf('.')+1);
+        console.log(suffix);
+    </script>
+</body>
+</html>

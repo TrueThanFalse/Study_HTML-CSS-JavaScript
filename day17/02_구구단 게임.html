@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>
+            구구단 game
+        </h1>
+        <ul>
+            <li>문제는 총 10문제 출제</li>
+            <li>정답을 확인하면 정답, 오답의 결과를 나타냄</li>
+            <li>총 10개의 문제 중 정답률 출력</li>
+        </ul>
+        <button type="button" onclick="question()">문제 출제</button>
+        <h3 id="question"></h3>
+        <button type="button" onclick="answer()">정답 확인</button>
+        <h3 id="answer"></h3>
+    </div>
+    
+    <script>
+        const input = document.getElementById('question');
+        const output = document.getElementById('answer');
+        let questionArray = [];
+        let answerArray = [];
+
+        function question(){
+            questionArray = []; // 초기화
+            let str = '<ol>';
+            for(let i=1; i<=10; i++){
+                let num1 = Math.floor(Math.random()*8)+2;
+                let num2 = Math.floor(Math.random()*9)+1;
+                let oneArray = [num1,num2];
+                questionArray.push(oneArray);
+                str += `<li>${num1} x ${num2} = <input type="text" id="userAnswer${i}"></li>`;
+            }
+            str += '</ol>';
+            input.innerHTML = str;
+        }
+
+        function answer(){
+            answerArray = []; // 초기화
+            let correctCount = 0;
+            for(let i=1; i<=10; i++){
+                answerArray.push(Number(document.getElementById(`userAnswer${i}`).value));
+            }
+
+            for(let i=0; i<10; i++){
+                let elem = questionArray[i]
+                let calcul = elem[0] * elem[1];
+                let answer = answerArray[i]
+                if(calcul === answer){
+                    document.getElementById(`userAnswer${i+1}`).value = `${answer} : 정답!`;
+                    document.getElementById(`userAnswer${i+1}`).style.backgroundColor = 'green';
+                    correctCount++;
+                }else{
+                    document.getElementById(`userAnswer${i+1}`).value = `${answer} : 땡!`;
+                    document.getElementById(`userAnswer${i+1}`).style.backgroundColor = 'red';
+                }
+            }
+
+            let correctRatio = (correctCount / 10);
+            output.innerHTML = `정답률 : ${correctRatio*100}%`;
+        }
+    </script>
+</body>
+</html>

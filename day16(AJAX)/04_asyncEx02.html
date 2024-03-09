@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 800px;
+            margin: auto;
+        }
+        header{
+            text-align: center;
+        }
+        section{
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <header id="header">
+        </header>
+        <section id="section">
+        </section>
+    </div>
+
+    <script>
+        const header = document.getElementById('header');
+        const section = document.getElementById('section');
+
+        fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json')
+        .then(resp => resp.json())
+        .then(result => run(result))
+        .catch(err => console.log(err));
+        
+        function run(obj){
+            let str1 = '';
+            str1 += `<h1>${obj.squadName}</h1>`;
+            str1 += `<p>Hometown : ${obj.homeTown} // Formed : ${obj.formed}</p>`;
+            header.innerHTML = str1;
+
+            let str2 = '';
+            for(let i=0; i<obj.members.length; i++){
+                str2 += `<article>`;
+                str2 += `<h3>${obj.members[i].name}</h3>`;
+                str2 += `<p>Secret identity : ${obj.members[i].secretIdentity}</p>`;
+                str2 += `<p>Age : ${obj.members[i].age}</p>`;
+                str2 += `<p>Superpowers :</p>`;
+                str2 += `<ui>`;
+                for(let j=0; j<obj.members[i].powers.length; j++){
+                    str2 += `<li>${obj.members[i].powers[j]}</li>`;
+                }
+                str2 += `</ui>`;
+                str2 += `</article>`;
+                section.innerHTML = str2;
+            }
+        }
+    </script>
+</body>
+</html>

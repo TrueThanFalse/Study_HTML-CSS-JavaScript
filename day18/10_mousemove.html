@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        body{
+            background-color: yellowgreen;
+        }
+        .icon{
+            font-size: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="icon">
+        <i class="bi bi-airplane-fill"></i>
+    </div>
+
+    <script>
+        document.body.addEventListener('mousemove',(e)=>{
+            console.log(e);
+            document.querySelector('.icon').style.left = e.pageX+'px';
+            document.querySelector('.icon').style.top = e.pageY+'px';
+            // e.pageX와 e.pageY가 적용될려면
+            // .icon에 position: absolute와 top, left 값이 작성 되어야 함
+        })
+    </script>
+</body>
+</html>

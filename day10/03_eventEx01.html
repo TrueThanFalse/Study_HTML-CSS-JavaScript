@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>성적확인</legend>
+            이름 : <input type="text" id="name"><br>
+            국어 : <input type="number" id="korean"><br>
+            영어 : <input type="number" id="eng"><br>
+            수학 : <input type="number" id="math"><br>
+            <button type="button" onclick="calcul()">성적계산</button>
+        </fieldset>
+    </form>
+    <!-- h3 태그에 이름 :, 합계 :, 평균 : 출력 -->
+    <h3 id="result"></h3>
+
+    <script>
+        function calcul(){
+            let calname = document.getElementById(`name`).value;
+            let calkorean = document.getElementById(`korean`).value;
+            let caleng = document.getElementById(`eng`).value;
+            let calmath = document.getElementById(`math`).value;
+
+            // calkorean = parseInt(calkorean);
+            // caleng = parseInt(caleng);
+            // calmath = parseInt(calmath);
+            // let sum = calkorean+caleng+calmath;
+
+            let sum = Number(calkorean) + Number(caleng) + Number(calmath);
+            let avg = Math.round(sum / 3); // 정수로 반올림
+            // let result = document.getElementById(`result`);
+            // let text = `이름 : ${calname}, 합계 : ${sum}, 평균 : ${avg}`;
+            // result.innerHTML = text;
+
+            // toFixed(n) : n번째까지 소수점 자리 표현
+            document.getElementById(`result`).innerText =
+            `이름 : ${calname}, 합계 : ${sum}, 평균 : ${avg.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

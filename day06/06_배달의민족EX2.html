@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: NanumPenScript;
+            src: url(../font/Nanum_Pen_Script/NanumPenScript-Regular.ttf);
+        }
+        @font-face {
+            font-family: HiMelody;
+            src: url(../font/Hi_Melody/HiMelody-Regular.ttf);
+        }
+        body{
+            font-family: NanumPenScript;
+            background-color: aquamarine;
+        }
+        div{
+            text-align: center;
+        }
+        header{
+            text-align: center;
+            margin: 50px;
+        }
+        header>h1{
+            font-size: 60px;
+        }
+        header>h3{
+            font-size: 35px;
+        }
+        .menu{
+            width: 300px;
+            background-color: white;
+            margin: auto;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            /* 다음 menu box 와의 간격 50px */
+        }
+        .menu>div:first-child{
+            width: 300px;
+            height: 200px;
+            border-radius: 10px 10px 0 0;
+            background-size: 300px 200px;
+        }
+        .menu>div>h3{
+            font-size: 1.5em;
+        }
+        .p1{
+            font-size: 20px;
+        }
+        .menu>div>p:last-child{
+            padding-bottom: 20px;
+            color: blue;
+        }
+        .ima1{
+            background-image: url(../image/chobab.jpg);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>배달의 민족</h1>
+        <h3>넌 배달할 때가 제일 멋있어</h3>
+    </header>
+    <!-- 여기서부터 메뉴 하나 -->
+    <div class="menu">
+        <div class="image ima1"></div>
+        <div>
+            <h3>맛있는 초밥</h3>
+            <p class="p1">주머니가 가벼운 당신을 위한 착한 가격</p>
+            <p><del>25,000원</del> 15,000원</p>
+            <a href="https://www.naver.com" target="_blank" class="payment">바로결제</a>
+        </div>
+    </div>
+    <!-- 메뉴 끝 -->
+</body>
+</html>

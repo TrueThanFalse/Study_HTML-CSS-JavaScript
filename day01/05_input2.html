@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        모든 태그는 속성을 가질 수 있음
+        <태그명 속성="값" 속성="값" 속성(속성 중 값이 없을 수 있음)>
+        속성 "" : ""는 중요함! 큰따옴표를 닫아야 다음 속성을 인식 할 수 있음
+        [속성 List]
+        - name : 서버로 데이터 전송시 변수명으로 사용되는 속성
+        - value : input 태그의 값을 지정
+        서버로 전송하면 name = value 인식됨
+        - id : 하나의 페이지에 하나만 허용 (중복금지)
+                => id가 2개 이상이면 Error가 발생하거나 하진 않지만 올바른 작동을 하지 않을 수 있다.
+        - class : CSS에서 구분자 역할을 하는 속성
+                class="a b c a b abc" => a, b, c, ab, abc
+        readonly : 읽기전용 (값이 따로 존재 하지 않음, value 지정 필요 없음)
+        disabled : 비활성화 (값이 따로 존재 하지 않음, value 지정 필요 없음)
+        tabindex : Tab 순서를 정할 때 사용
+        
+        속성의 종류는 MDN에서 찾아 볼 수 있다.
+    -->
+
+    <form action="">
+        <input type="text" name="a" value="name" tabindex="1"><br>
+        <input type="text" name="b" value="age" readonly tabindex="3"><br>
+        <input type="text" name="c" tabindex="2"><br>
+        <input type="text" name="d" placeholder="test" tabindex="4"><br>
+        <input type="checkbox" name="tmp" checked>선택1
+        <!-- checked : checkbox, radio 에서 사용하면 기본값이 check가 된 상태로 출력됨 -->
+        <input type="checkbox" name="tmp">선택2<br>
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>

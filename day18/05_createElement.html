@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="btn1">li 한번에 추가</button>
+    <button type="button" id="btn2">li 하나씩 추가</button>
+    <button type="button" id="btn3">li 한번에 추가</button>
+    <button type="button" id="btn4">li 하나씩 추가</button>
+    <ul id="ul"></ul>
+    <hr>
+    <ol id="ol"></ol>
+    <hr>
+    <ul id="ul2"></ul>
+    <hr>
+    <ol id="ol2"></ol>
+    <hr>
+
+    <script>
+        // html, css, javascript, SQL
+
+        const btn1 = document.getElementById('btn1');
+        const btn2 = document.getElementById('btn2');
+        const btn3 = document.getElementById('btn3');
+        const btn4 = document.getElementById('btn4');
+        const ul = document.getElementById('ul');
+        const ol = document.getElementById('ol');
+        const ul2 = document.getElementById('ul2');
+        const ol2 = document.getElementById('ol2');
+        let arr = ['HTML', 'CSS', 'Javascript', 'SQL'];
+
+        btn1.addEventListener('click', ()=>{
+            let tmpStr = '';
+            for(let i=0; i<arr.length; i++){
+                tmpStr += `<li>${arr[i]}</li>`;
+            }
+            ul.innerHTML = tmpStr;
+
+            // arr.forEach((elem)=>{
+            //     tmpStr += `<li>${elem}</li>`;
+            // })
+            // ul.innerHTML = tmpStr;
+        })
+
+        let index = 0;
+        btn2.addEventListener('click', ()=>{
+            if(index < arr.length){
+                let tmpStr = `<li>${arr[index]}</li>`;
+                ol.innerHTML += tmpStr;
+                index++;
+            }
+        })
+
+        // createElement : element 생성
+        // appendChild : 다른 element의 자식으로 추가
+        // 최신 트렌드는 String을 쌓아서 한번에 화면에 뿌려주기
+
+        btn3.addEventListener('click', ()=>{
+            ul2.innerHTML = '';
+            arr.forEach((elem)=>{
+                let li = document.createElement('li'); // <li></li>
+                li.innerText = elem; // <li>HTML</li>
+                ul2.appendChild(li); // <ul><li>HTML</li></ul>
+            })
+        })
+
+        let index2 = 0;
+        btn4.addEventListener('click', ()=>{
+            if(index2 < arr.length){
+                let li = document.createElement('li');
+                li.innerText = arr[index2];
+                ol2.appendChild(li);
+                index2++;
+            }
+        })
+    </script>
+</body>
+</html>

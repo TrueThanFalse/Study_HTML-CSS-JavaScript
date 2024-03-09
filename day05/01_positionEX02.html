@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer{
+            height: 150px;
+            min-width: 400px;
+            background-color: aqua;
+            position: relative;
+        }
+        .inner{
+            width: 100px;
+            height: 100px;
+            top: 25px;
+            position: absolute;
+        }
+        .inner:nth-child(1){
+            left: 10px;
+            background-color: yellow;
+
+        }
+        .inner:nth-child(2){
+            background-color: blueviolet;
+            left: 50%;
+            transform: translate(-50%, 0);
+            /* transform: translate(x축, y축) */
+        }
+        .inner:nth-child(3){
+            background-color: brown;
+            right: 10px;
+        }
+
+        .pbox{
+            width: 500px;
+            height: 500px;
+            background-color: chartreuse;
+            position: relative;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+            /* absolute에 해당되는 relative가 없다면 자동으로 body가 relative됨 */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+    </div>
+    <div class="pbox">
+        <div class="box"></div>
+    </div>
+</body>
+</html>

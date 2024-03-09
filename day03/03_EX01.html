@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        div 3개를 만들어,
+        naver, google, daum 사이트로 연결(새창으로 연결)하도록 하고,
+        각각 div의 색과 모양을 달리하여 스타일 넣어주고,
+        링크의 색도 변경
+
+        ul 태그에 li*10 추가하여 1~10까지 값을 쓰고,
+        짝수 : 빨간색
+        3,6,9 : 초록색
+        1, 10 : 굵게 처리
+        요소 뒤에 .을 추가
+    -->
+    <style>
+        div{
+            width: 60px;
+        }
+        .naver{
+            background-color: yellow;
+        }
+        .google{
+            background-color: greenyellow;
+        }
+        .daum{
+            background-color: red;
+        }
+        ul li:nth-child(even){
+            color: red;
+        }
+        ul li:nth-child(3n){
+            color: aqua;
+        }
+        ul li:first-child{
+            color: yellow;
+        }
+        ul li:last-child{
+            color: blue;
+        }
+        li::after{
+            content: ".";
+        }
+        a:link{
+            color: black;
+        }
+        a:visited{
+            color: aqua;
+        }
+        a:active{
+            color: blue;
+        }
+
+        /* Solution */
+        div{
+            background-color: aquamarine;
+            width: 100px;
+            height: 30px;
+            border: 1px solid black;
+            border-style: solid; /* 실선 */
+            border-width: 1;
+            border-color: black;
+        }
+        .naver{
+            background-color: blueviolet;
+        }
+        .google{
+            background-color: brown;
+        }
+        .daum{
+            background-color: darkolivegreen;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+        a:link{
+            color: aqua;
+        }
+        a:visited{
+            color: brown;
+        }
+        a:active{
+            color: black;
+        }
+        ul>li{
+            list-style: none;
+            /* list-style : list 머리글(동그라미) 지정(삭제 가능) */
+            display: inline;
+            /* display : list의 배치 순서 지정 */
+            margin-left: 20px;
+            /* margin : 사이 벌리기 */
+        }
+        ul>li:nth-child(2n){
+            color: red;
+        }
+        ul>li:nth-child(3n){
+            color: blueviolet;
+        }
+        ul>li:first-child, ul>li:last-child{
+            font-weight: 700px;
+        }
+        ul>li::after{
+            content: ".";
+        }
+
+    </style>
+</head>
+<body>
+    <form action="">
+        <div class="naver">
+            <a href="https://www.naver.com" target="_blank">naver</a>
+        </div>
+        <div class="google">
+            <a href="https://www.google.com" target="_blank">google</a>
+        </div>
+        <div class="daum">
+            <a href="https://www.daum.net" target="_blank">daum</a>
+        </div>
+        <hr>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+        </ul>
+    </form>
+</body>
+</html>

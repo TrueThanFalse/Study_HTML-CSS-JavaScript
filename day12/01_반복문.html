@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문</title>
+</head>
+<body>
+    <h1>
+        for, while, do~while : Java와 동일한 문법을 사용
+    </h1>
+    <ul>
+        <li>
+            for : 반복 횟수가 명확할 때 사용<br>
+            for(초기값; 조건식; 증감식){<br>
+                실행문;<br>
+            }
+        </li>
+        <li>
+            while, do~while : 반복 횟수가 명확하지 않을 때<br>
+            while(조건식){<br>
+                실행문;<br>
+                증감식;<br>
+            }<br>
+            do{<br>
+                실행문;<br>
+                증감식;<br>
+            }while(조건식);
+        </li>
+        <li>
+            모든 조건식은 참(true)일 때 실행됨
+        </li>
+        <li>
+            조건이 계속 true면 무한 루프에 걸림<br>
+            따라서 조건이 실행문 안에서 false로 바뀔 수 있는 구문이 반드시 필요
+        </li>
+        <li>
+            break; 구문을 통해 반복문을 탈출할 수 있음
+        </li>
+    </ul>
+
+    <script>
+        let sum = 0;
+        for(let i=0; i<=5; i++){
+            sum += i;
+            console.log(i);
+        }
+        console.log(sum);
+        console.log('----------')
+
+        let count = 0;
+        while(count <= 5){
+            console.log(count);
+            count++;
+        }
+        console.log('----------')
+
+        let mul = 0;
+        let dan = 3;
+        for(let i=1; i<=9; i++){
+            mul = dan * i;
+            console.log(`${dan} * ${i} = ${mul}`);
+        }
+        console.log('----------')
+
+        let incre = 1;
+        while(incre <= 9){
+            console.log(`${dan} * ${incre} = ${dan*incre}`);
+            incre++;
+        }
+    </script>
+</body>
+</html>

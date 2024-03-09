@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: yellowgreen;
+        }
+        .container{
+            width: 300px;
+            background-color: darkblue;
+            text-align: center;
+            border-radius: 10px;
+            padding: 20px;
+
+            /* 화면을 정중앙으로 이동하기 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .text-field{
+            width: 100%;
+            font-size: 15px;
+            padding: 5px;
+            padding-left: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+        }
+        .btn{
+            width: 100%;
+            box-sizing: border-box;
+            padding: 5px;
+            font-size: 15px;
+            border-radius: 5px;
+            background-color: gray;
+            border: none;
+            margin-bottom: 40px;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .link>a{
+            text-decoration: none;
+            color: gray;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <input type="text" class="text-field" name="id" placeholder="아이디">
+            <input type="password" class="text-field" name="pw" placeholder="비밀번호" autocomplete="off">
+            <input type="submit" disabled="true" class="btn" name="login" value="로그인">
+            <!-- 버튼 자체에 disabled="true" 비활성화를  -->
+        </form>
+        <div class="link">
+            <a href="#">비밀번호를 잊어버리셨나요?</a>
+        </div>
+    </div>
+
+    <script>
+        // 부트스트랩 -> 문서
+
+        const btn = document.querySelector('.btn');
+        const inputs = document.querySelectorAll('.text-field');
+        console.log(btn);
+        console.log(inputs);
+        console.log(inputs[0]);
+        console.log(inputs[1]);
+
+        // id 규칙
+        inputs[0].addEventListener('input', ()=>{
+            // password의 값이 있는지 체크
+            let upw = inputs[1].value;
+            if(upw.length > 7){
+                let uid = inputs[0].value;
+                if(uid.length > 7){
+                    btn.style.setProperty('background-color', 'red');
+                    // btn.style.backgroundColor = 'red';
+                    // disabled 비활성화
+                    btn.disabled = false; // 비활성화를 풀겠다
+                }
+            }else{
+                btn.style.setProperty('background-color', 'gray');
+                btn.disabled = true; // 비활성화 하겠다
+            }
+        });
+
+        // pw 규칙
+        // /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+        // 영어, 숫자, 특수문자 포함된 8글자 이상
+        inputs[1].addEventListener('input', ()=>{
+            let uid = inputs[0].value;
+            if(uid.length >= 7){
+                let upw = inputs[1].value;
+                // 정규식 패턴 체크 과정
+                // 정규식 패턴에 일치하면 true, 아니면 false
+                let reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(upw);
+                console.log(upw, reg);
+                if(reg){
+                    btn.style.setProperty('background-color', 'red');
+                    // btn.style.backgroundColor = 'red';
+                    // disabled 비활성화
+                    btn.disabled = false; // 비활성화를 풀겠다
+                }else{
+                    btn.style.setProperty('background-color', 'gray');
+                    btn.disabled = true; // 비활성화 하겠다
+                }
+            }
+        })
+        
+
+    </script>
+</body>
+</html>

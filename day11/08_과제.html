@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <legend>성적확인</legend>
+        <div>
+            이름 : <input type="text" id="name">
+        </div>
+        <div>
+            국어 : <input type="text" id="kor">
+        </div>
+        <div>
+            영어 : <input type="text" id="eng">
+        </div>
+        <div>
+            수학 : <input type="text" id="math">
+        </div>
+        <div>
+            <button type="button" onclick="run()">계산</button>
+        </div>
+    </fieldset>
+    <h3 id="result"></h3>
+
+    <script>
+        function run(){
+            let name = document.getElementById(`name`).value;
+            let kor = document.getElementById(`kor`).value;
+            let eng = document.getElementById(`eng`).value;
+            let math = document.getElementById(`math`).value;
+            if(!(0<=kor&&kor<=100) || !(0<=eng&&eng<=100) || !(0<=math&&math<=100)){
+                alert(`과목 점수는 0~100까지 입력할 수 있습니다.`);
+                document.getElementById(`kor`).value = '';
+                document.getElementById(`eng`).value = '';
+                document.getElementById(`math`).value = '';
+                return;
+            }
+            let sum = Number(kor)+Number(eng)+Number(math);
+            let avg = sum / 3;
+            let pass = ``;
+            if(avg >= 60){
+                pass = `success`;
+            }else if(0<=avg && avg<60){
+                pass = `fail`;
+            }
+            document.getElementById(`result`).innerText =
+            `이름:${name}, 합계:${sum}, 평균:${avg.toFixed(2)}, 합격여부:${pass}`;
+        }
+    </script>
+</body>
+</html>

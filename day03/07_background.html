@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        배경 속성(background)
+        ● 배경색 : background-color
+        ● 배경이미지 : background-image
+            - 배경색과 배경이미지를 둘 다 지정하면 배경이미지가 우선 출력
+            - 배경이미지가 출력되지 않는 부분(비는 부분)이 있다면 배경색으로 출력
+        ● 배경이미지 크기 : background-size: 가로 세로
+        ● 배경이미지 반복 : backgroudn-repeat
+            - no-repeat : 반복안함 (1번만 출력)
+            - repeat-x : x축으로만 반복
+            - repeat-y : y축으로만 반복
+            - round : 양쪽 반복 (기본값)
+        ● 배경이미지 위치 : background-position
+            - center : 가운데
+            - x축,y축으로 값을 주면 됨
+        ● 구문 = background: color image position size repeat 순으로 입력
+            - 하지만 일반적으로 전부 작성하지 않고 하나씩 설정함
+        ● 배경 그림자
+            e.g.) box-shadow: 5px 5px 20px green;
+     -->
+     <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            background-color: grey;
+            border: 2px solid black;
+            background-image: url(../image/dog1.jpg);
+            background-size: 250px 250px;
+            background-repeat: no-repeat;
+            background-position: center;
+            /* background-position: 5px 5px; */
+            box-shadow: 5px 5px 20px green;
+        }
+        .box2{
+            width: 300px;
+            height: 300px;
+            background-image: url(../image/dog2.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% 100%;
+            
+        }
+
+     </style>
+</head>
+<body>
+    <!-- .box -> 자동생성 -->
+    <div class="box"></div>
+    <hr>
+    <!-- 문제. 
+        box2 생성 후 가로*세로 300px 생성
+        배경이미지가 박스크기에 꽉 차도록 설정
+    -->
+    <div class="box2"></div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Type</title>
+</head>
+<body>
+    <h1>
+        Javascript의 데이터 타입의 확장 개념, 집합데이터를 다룰 수 있는 객체
+    </h1>
+    <ul>
+        <li>
+            Set : 중복 데이터 허용X => 중복 데이터가 들어오면 체크 후 하나만 남김
+        </li>
+        <li>
+            Set() : 파라미터는 주로 배열이 사용됨, 배열의 index, value 값을 활용하여 집합 데이터를 만듬
+        </li>
+        <li>
+            Set 전용 메서드들이 제공
+        </li>
+        <li>
+            new Set() / new Set(array) : set 객체를 생성 및 초기화
+        </li>
+        <li>
+            set명.add(value) : 데이터 추가
+        </li>
+        <li>
+            set명.delete(value) : 데이터 삭제
+        </li>
+        <li>
+            set명.has(value) : 값의 존재 여부를 true / false 로 return
+        </li>
+        <li>
+            set명.forEach(callback function) : set 순환 탐색
+        </li>
+        <li>
+            entries(), s.keys(), s.values() :
+            리턴타입이 SetIterator => 별도 메서드로 접근하여 사용해야 함
+        </li>
+        <li>
+            set명.size : set의 길이 (괄호 없음)
+        </li>
+        <li>
+            set명.clear() : set 초기화(모든 요소 삭제)
+        </li>
+
+        <script>
+            const testSet = new Set(['html','css','js']);
+            console.log(testSet);
+            testSet.add('react');
+            console.log(testSet);
+            console.log(testSet.size);
+            testSet.delete('html');
+            console.log(testSet);
+            testSet.add('css'); // 중복 값 추가 불가
+            console.log(testSet);
+            console.log(testSet.has('html')); // false
+            console.log(testSet.has('css')); // true
+            console.log('--------------------');
+
+            testSet.forEach((e)=>console.log(e));
+            testSet.forEach(function(v,i,s){
+                console.log(i, v, s);
+            })
+            console.log('--------------------');
+
+            // keys(),entries(),values()의 리턴타입은 SetIterator
+            console.log(testSet.keys());
+            // keys() : 식별자로 사용되는 값을 return
+            console.log(testSet.entries());
+            // entries() : key => value 쌍(pair)로 값을 return
+            console.log(testSet.values());
+            // values() : value 값을 return
+            // SetIterator : set의 상위 인터페이스 규격
+            console.log('--------------------');
+
+            // testSet.values().forEach((e)=>console.log(e)); // Error 발생
+            //      => forEach가 아닌 for of로 순환 할 수 있음
+            // iterable : 반복이 가능함을 의미
+            //      -> 반복이 가능한 요소 : 배열, map, set => key(), values(), enteries()
+            //      -> forEach 사용 불가능!
+            //      -> for of : [Symbol.Iterator] 속성을 가지는 컬렉션에서 사용 가능
+            for(const iter of testSet.values()){
+                console.log(iter);
+            }
+
+            console.log('--------------------');
+            for(const iter of testSet.entries()){
+                // 배열 형태로 return
+                console.log(iter);
+                iter.forEach(function(v){
+                    // 배열의 형태이므로 forEach가 가능함
+                    console.log(v);
+                })
+            }
+
+            console.log('--------------------');
+            testSet.clear();
+            console.log(testSet);
+        </script>
+    </ul>
+</body>
+</html>

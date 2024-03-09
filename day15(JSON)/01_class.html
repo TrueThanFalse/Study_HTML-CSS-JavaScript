@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        클래스, 객체, 생성자
+    </h1>
+
+    <script>
+        class Car{ // 클래스 선언
+            // 자바스크립트에서는 생성자는 1개만 허용
+            // 멤버변수 선언 없이 this로 변수가 선언됨
+
+            // 생성자
+            constructor(name,year){
+                this.name = name;
+                this.year = year;
+                this.model = '';
+            }
+        }
+
+        let myCar1 = new Car('쏘나타','2023');
+        let myCar2 = new Car('그랜저',2022);
+        console.log(myCar1);
+        console.log(myCar2);
+        myCar1.model = '1세대';
+        myCar2.model = '2세대';
+
+        let myCar3 = new Car();
+        myCar3.name = '아반떼';
+        myCar3.year = 2020;
+        myCar3.model = '3세대';
+        console.log(myCar3);
+
+        let model = myCar1.model; // 요소 추출
+        console.log(model);
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="run()">데이터 불러오기</button>
+    <ul id="ul"></ul>
+
+    <script>
+        function run(){
+            ul.innerHTML = '';
+            for(let i=1; i<=5; i++){
+                let url =`https://jsonplaceholder.typicode.com/todos/${i}`;
+                fetch(url)
+                .then(resp => resp.json())
+                .then(result => printData(result))
+                .catch(err => console.log(err));
+            }
+        }
+        
+        let str = '';
+        function printData(obj){
+            console.log(obj);
+            let ul = document.getElementById('ul');
+            
+            for(const key in obj){
+                str += `<li>${key} : ${obj[key]}</li>`;
+            }
+            str += '-------------------------';
+            ul.innerHTML = str;
+        }
+    </script>
+</body>
+</html>

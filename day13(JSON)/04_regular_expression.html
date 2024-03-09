@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+    <!-- https://regexlib.com/ : 정규식 예시 제공 웹사이트 (password 검색) -->
+</head>
+<body>
+    <h1>
+        정규식(Regular Expression) : 문자열에서 특정 내용을 찾거나 대체, 발췌하는데 사용
+    </h1>
+    <ul>
+        <li>
+            regexp 단어로 많이 사용됨
+        </li>
+        <li>
+            특정 데이터를 탐색, 확인, 존재여부 등을 쉽게 확인하기 위한 규칙
+        </li>
+        <li>
+            웹 분야에서는 password 작성규칙, 첨부파일 규칙 등에 사용되며 자주 쓰이진 않음
+        </li>
+        <li>
+            데이터 분석과 관련해서는 반드시 꼭 알고 있어야 함
+        </li>
+        <li>
+            알고 있으면 편리한 기능이 많음. 다른 언어에서도 거의 비슷한 형식으로 활용됨
+        </li>
+    </ul>
+    <ul>
+        <li>
+            /regexp/i : (/ /) = 시작과 종료 기호, regexp = pattern, i = flag 라고 명명함
+        </li>
+        <li>
+            ("str").match(/regexp/flag) : 
+                str 에서 매칭되는 항목들을 배열로 return
+        </li>
+        <li>
+            ("str").replace(/regexp/flag, 변환할 문자) :
+                정규표현식에 매칭되는 항목을 변환할 문자로 변경
+        </li>
+        <li>
+            ("str").split(/regexp/) :
+                정규표현식에 매칭되는 항목으로 쪼개어 배열로 return
+        </li>
+        <li>
+            (정규표현식).test("str") :
+                str 문자열이 정규표현식 규칙에 맞으면 true, 아니면 false
+        </li>
+    </ul>
+    <ul>
+        <li>
+            정규표현식 flag
+        </li>
+        <li>
+            i : 대소문자 구분 X
+        </li>
+        <li>
+            g : 전역 검색
+        </li>
+        <li>
+            m : 줄바꿈도 포함
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            정규표현식 pattern
+        </li>
+        <li>
+            a-zA-z : 모든 영어 알파벳, a-z : 소문자만, A-Z : 대문자만<br>
+            ㄱ-ㅎ가-힣 : 모든 한글 / 0-9 : 숫자
+        </li>
+        <li>
+            . : 모든 문자열(숫자, 한글, 영어, 특수기호, 공백 모두), 단 줄바꿈은 제외
+        </li>
+        <li>
+            \d : 숫자   \D : 숫자 아닌 것<br>
+            \s : 공백   \S : 공백 아닌 것<br>
+            \w : 영어+숫자  \W : 영어+숫자 아닌 것<br>
+            \특수기호 : \.\!\@\#...
+        </li>
+        <li>
+            검색 패턴 : | => or의 의미,    e.g. a|b
+        </li>
+        <li>
+            [] : 괄호 안의 문자들 중 하나, or 처리의 묶음으로 보면 됨
+            /abc/ => "abc"를 포함하는
+            /[abc]/ => "a" 또는 "b" 또는 "c" 를 포함하는
+            [다-바] => 다,라,마,바 중 하나
+        </li>
+        <li>
+            [^문자] : 괄호 안의 문자를 제외한 것
+            [^abcd] : a,b,c,d 4개의 문자가 아닌 것
+        </li>
+        <li>
+            ^문자열$ : 문자열로 시작(^)하는, 문자열로 끝($)나는
+        </li>
+    </ul>
+
+    <script>
+        let testText = 'this is Javascript Regular Expression';
+        console.log(testText.match(/is/g)); // is is 배열 요소 2개 return
+        
+        const fileName = ['abc.jpg', 'main.gif', 'text.txt', 'doc.pdf', 'code.js', 'top.jpge'];
+        // 배열에 jpg, gif, jpeg, png 있는지 확인
+        // 이미지파일 : 이미지파일 출력
+        // 그외 파일 : 나머지 파일 출력
+        for(let file of fileName){
+            if(file.match(/(jpg|jpge|png|gif)/i)){ // 정규표현식은 문자라도 따옴표로 묶지 않음
+                console.log(`이미지 파일 : ${file}`);
+            }else{
+                console.log(`그외 파일 : ${file}`);
+            }
+        }
+    </script>
+</body>
+</html>

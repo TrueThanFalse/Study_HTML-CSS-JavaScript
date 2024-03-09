@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <style>
+        .s{ /* eventFunc2의 span에 적용되는 style */
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- 일반적으로 클래스는 CSS 활용 목적, ID는 JS 활용 목적으로 사용 함 -->
+    <h1>
+        이벤트 객체는 전역객체로써 모든 태그에 객체를 참조 시킬 수 있음<br>
+        전역객체 : 모든곳에 영향을 줄 수 있음
+    </h1>
+    <ul id="ul1" class="uls">
+        <li>
+            a 태그와 button 태그에 이벤트를 참조시켜<br>
+            클릭에 대한 반응을 기대할 수 있도록 만드는 것이 일반적임
+        </li>
+        <li>
+            a 태그에서는 href 속성에 의해 자체 이동(동기화 방식)이 구현되어있어<br>
+            별도의 이동을 막는 코드가 필요 => (href:"#" -> #으로 이동을 막음)
+        </li>
+        <li>
+            객체에 이벤트를 부여하는 방식에는 크게 3가지가 있음 (각자의 목적과 작동방식이 다름)
+            1. document.addEventListener
+            2. innerText
+            3. innerHTML
+        </li>
+    </ul>
+    <ul id="ul2" class="uls">
+        <li>
+            화면의 출력 영역을 document(하나의 객체)영역 이라고 함
+        </li>
+        <li>
+            html 태그: html element, 속성: attribute, 일반 텍스트:textNode 라고 함
+        </li>
+        <li>
+            html로 출력하기 : innerHTML 라는 property를 사용
+        </li>
+        <li>
+            text로 출력하기 : innerText 라는 property를 사용
+        </li>
+        <li>
+            html element를 id 값으로 객체 가져오기 : getElementById(`idName`)<br>
+            => 주로 ID를 통해 객체를 가져옴
+        </li>
+        <li>
+            html element를 css 선택자를 사용하여 가져오기 : querySelector('selector')
+        </li>
+    </ul>
+
+    <button type="button" onclick="eventFunc()">클릭 해보세요.</button>
+    <button type="button" onclick="eventFunc2(100)">클릭 해보세요.</button>
+    <button type="button" onclick="alert('경고창 띄우기')">alert창</button>
+    <!-- JS 에서 제공하는 alert Function -->
+
+    <button type="button" id="testBtn">test Button</button>
+    <h1 id="printResult"></h1>
+
+    <script>
+        document.getElementById(`testBtn`).addEventListener(`click`, ()=>{
+            // 이벤트 내용 작성
+            alert(`테스트 버튼을 누르셨군요!`);
+        })
+
+        function eventFunc() {
+            // html의 객체 가져오기 (printResult)
+            let printResult = document.getElementById('printResult'); // 객체 저장하기
+            console.log(printResult);
+            printResult.innerText = '1번 버튼을 클릭 하셨네요~!';
+        }
+
+        function eventFunc2(num) {
+            // html의 객체 가져오기 (printResult)
+            let printResult = document.getElementById('printResult'); // 객체 저장하기
+            printResult.innerHTML = `<span class="s" style="color:red">스팬 태그를 사용했어요. ${num}</span>`;
+            // style="color:red" => 스타일 요소가 적을 때 직접 작성해도 됨
+            // class는 style이 많을 경우 혹은 동일 클래스를 사용하는 경우
+        }
+        
+        // 이벤트에 리스너 달기 (화면 전체에 리스너 달기 : 가장 넓은 범위)
+        // document.addEventListener('click', (e)=>{
+        //     console.log(e.target);
+        // })
+    </script>
+</body>
+</html>

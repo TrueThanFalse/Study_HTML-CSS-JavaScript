@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map 예제</title>
+</head>
+<body>
+    <!-- 
+        input 2개 생성 -> 과목, 점수
+        추가 버튼을 클릭하면 map에 추가
+        출력 버튼을 클릭하면 map을 출력 : ul / li로 출력
+        결과 버튼을 클릭하면 합계, 평균, 합격여부(60점 이상 합격) 출력(h3)
+    -->
+
+    <form action="">
+        <div>
+            과목 : <input type="text" id="subject"><br>
+            점수 : <input type="text" id="score"><br>
+            <br>
+        </div>
+        <div>
+            <button type="button" onclick="add()">추가</button>
+            <button type="button" onclick="output()">출력</button>
+            <button type="button" onclick="result()">결과</button>
+        </div>
+        <div>
+            <ul id="ul"></ul>
+        </div>
+        <div>
+            <h3 id="text"></h3>
+        </div>
+    </form>
+
+    <script>
+        let myMap = new Map();
+        let outputText = '';
+        let sum = 0;
+        let avg = 0;
+        let pass = '';
+
+        function add(){
+            let subject = document.getElementById('subject').value;
+            let score = document.getElementById('score').value;
+
+            for(let tmp of myMap){
+                if(tmp == subject){
+                    return;
+                }
+            }
+
+            if(subject == '' || score == ''){
+                alert('과목과 점수 중 빈칸이 있으면 안됩니다.');
+                return;
+            }
+
+            myMap.set(subject, score);
+            console.log(myMap);
+
+            document.getElementById('subject').value = '';
+            document.getElementById('score').value = '';
+        }
+
+        function output(){
+            document.getElementById('ul').innerHTML = ''; // 초기화
+
+            for(let [key,value] of myMap.entries()){
+                outputText += `<li>${key} : ${value}</li>`;
+            }
+
+            document.getElementById('ul').innerHTML = outputText;
+        }
+
+        function result(){
+            // 합계
+            let tmpSum = 0;
+            for(let val of myMap.values()){
+                tmpSum += Number(val);
+            }
+            sum = tmpSum;
+
+            // 평균
+            avg = (sum / myMap.size).toFixed(2);
+
+            // 합격여부
+            if(avg >= 60){
+                pass = '합격';
+            }else{
+                pass = '불합격';
+            }
+
+            document.getElementById('text').innerText =
+            `합계 : ${sum}, 평균 : ${avg}, 합격여부 : ${pass}`;
+        }
+    </script>
+</body>
+</html>

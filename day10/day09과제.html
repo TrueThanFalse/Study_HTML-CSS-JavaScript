@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const musician = {
+            name:`IU`,
+            age: 20,
+            addr: `seoul`,
+            playList: {
+                first: '너랑나',
+                second: '좋은날',
+                thrid: '밤편지'
+            },
+            jukebox: function(f, s, t){
+            console.log(this.playList.first+', '+this.playList.second+', '+this.playList.thrid);
+            return `re: ${f}, ${s}, ${t}`;
+            }
+        }
+        
+        let first = '어푸';
+        let second = '라일락';
+        let third = `후라이의꿈`;
+        console.log(musician.name+`(`+musician.age+`), `+musician.addr);
+        console.log(musician.playList.first);
+        console.log(musician.jukebox(first, second, third));
+    </script>
+</body>
+</html>

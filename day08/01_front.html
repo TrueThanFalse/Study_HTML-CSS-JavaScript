@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 기본 태그들이 가지고 있는 고유의 속성들을 초기화하는 코드 */
+        /* google에서 reset css 검색 */
+        @import url(reset.css); 
+        /* 
+        url에서 /(슬래쉬)는 다른 폴더로 넘어갈 때 필요, 같은 폴더에 있으면 슬래쉬 없이 바로 파일명
+        / : 슬래쉬 하나는 자신의 폴더를 벗어나기
+        ../ : 다른 폴더로 들어가서 파일을 선택 
+        */
+        .container{
+            width: 100%; /* 부모 기준 100% (body가 부모) */
+            /* vh / vw : 모니터(브라우저)의 높이를 기준으로 설정 */
+            height: 100vh;
+            background: linear-gradient(45deg, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url(../image/room.jpg);
+            background-size: cover;
+        }
+        .container header{
+            width: 90%;
+            height: 50px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .container header a{
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        /* .container header h1{
+            float: left;
+        }
+        .container header .nav{
+            float: right;
+        } */
+        /* float 대신 flex를 활용 */
+        .container header .nav ul{
+            display: flex;
+            justify-content: space-between;
+        }
+        .container header .nav ul li{
+            margin: 0 10px;
+            
+        }
+        .container header .nav ul li a{
+            font-size: 15px;
+        }
+        .container header .nav ul li a:hover{
+            color: yellow;
+        }
+        .main{
+            /* 전체 브라우저의 가운데 정렬 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+        .main h2{
+            font-size: 50px;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        .main button{
+            border: 2px solid violet;
+            font-size: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            background-color: transparent;
+            /* transparent : 부모 값으로 변경 */
+            transition: 0.5s;
+        }
+        .main button:hover{
+            background-color: greenyellow;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><a href="#">DESIGN</a></h1>
+            <div class="nav">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">LOGIN</a></li>
+                    <li><a href="#">SIGNUP</a></li>
+                    <li><a href="#">BOARD</a></li>
+                </ul>
+            </div>
+        </header>
+        <div class="main">
+            <h2>Welcome to Front-End World</h2>
+            <a href="02_shop.html" target="_blank"><button>Leanrn More</button></a>
+        </div>
+    </div>
+</body>
+</html>

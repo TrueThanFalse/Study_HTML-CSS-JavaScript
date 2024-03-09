@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>오늘은?</h1>
+    <button type="button" onclick="run()" id="btn">Today</button>
+    <h3 id="result">
+        <!-- 오늘의 날짜와 요일을 출력 -->
+        <!-- 2023. 10. 24.(화) -->
+    </h3>
+
+    <script>
+        function run(){
+            let now = new Date();
+            let date = now.toLocaleDateString();
+            let day = ``;
+            switch(now.getDay()){
+                case 0: day = '일'; break;
+                case 1: day = '월'; break;
+                case 2: day = '화'; break;
+                case 3: day = '수'; break;
+                case 4: day = '목'; break;
+                case 5: day = '금'; break;
+                case 6: day = '토'; break;
+                default: break;
+            }
+            document.getElementById(`result`).innerText = `${date}(${day})`;
+        }
+
+        /*
+        ID로 addEventListener, onclick 작성 가능
+        e.g.)
+        const btn = document.getElementById(`btn`);
+        btn.addEventListener(`click`, ()=>{
+            // 구문 작성
+        })
+
+        btn.onclick = function(){
+            // 구문 작성
+        }
+        */
+    </script>
+</body>
+</html>

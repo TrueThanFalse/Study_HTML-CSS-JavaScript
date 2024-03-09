@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할인율 구하기</title>
+</head>
+<body>
+    <form action="">
+        가격 : <input type="number" id="price">원<br>
+        할인율 : <input type="number" id="rate">%<br>
+        <button type="button" onclick="calcul()">할인 가격 계산</button>
+    </form>
+    <h3 id="result"></h3>
+
+    <script>
+        // 가격과 할인율을 입력받아 할인 금액과 지불 금액을 구하시오.
+        function calcul(){
+            let price = document.getElementById(`price`).value;
+            let rate = document.getElementById(`rate`).value;
+            let result = Math.round(parseInt(price)-(parseInt(price)*(parseInt(rate)*0.01)));
+            if(result >= 0){
+                document.getElementById(`result`).innerText = `${result}원`;
+            }else{
+                document.getElementById(`result`).innerText = `Error`;
+            }
+        }
+    </script>
+</body>
+</html>

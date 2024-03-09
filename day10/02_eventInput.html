@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event-input</title>
+</head>
+<body>
+    <h1>
+        form 태그를 통해 데이터 받아오기
+    </h1>
+    <ul>
+        <li>
+            input, textarea, select, html element 속성, 텍스트 데이터 받아오기
+        </li>
+        <li>
+            input tag는 value 속성에 값이 맵핑 되어 있으므로 value의 값을 호출하면<br>
+            input tag에 입력하는 값을 가져올 수 있음
+        </li>
+        <li>
+            select-option, radio, checkbox는 value 값의 선택한 값을 가져오기 위해서<br>
+            별도의 value 값을 추가하는 작업이 필요함
+        </li>
+        <li>
+            value 속성의 값은 항상 String 처리 됨 ★
+        </li>
+        <li>
+            String 처리된 value 값을 숫자로 사용하기 위해선 자료형 변환이 필요
+        </li>
+    </ul>
+
+    <form action="">
+        <fieldset>
+            <legend>제목 : 이벤트를 활용한 데이터 전송</legend>
+            id : <input type="text" id="userid"><br>
+            pw : <input type="password" id="userpw"><br>
+            birth : <input type="date" id="birth"><br>
+            pin : <input type="number" id="pin"><br>
+            <button type="button" onclick="clickEventInput()">전송</button>
+            <button type="button" onclick="makeList()">li로 전송</button>
+            <!-- 값을 JS로 끌어오기 위해선 submit(서버 전송)이 아닌 type="button" 사용 -->
+        </fieldset>
+    </form>
+
+    <h3 id="info"></h3>
+    <ol id="ol"></ol>
+
+    <script>
+        // let userid = document.getElementById(`userid`).value;
+        // let userpw = document.getElementById(`userpw`).value;
+        // let userBirth = document.getElementById(`birth`).value;
+        // let userPin = document.getElementById(`pin`).value;
+        // 전역 범위로 선언할 수 없음 => 왜? HTML 실행시(새로고침) input 태그는 비어있는 값임
+
+        function clickEventInput(){
+            /*
+            ★ < 화면에서 입력한 값을 받아 오는 과정 >
+            1. 화면에 그 값이 있어야 함(input 태그 내부에 값이 작성 되어있어야 함 => 전역 범위로 뺄 수 없음)
+            2. 가져온 값을 저장할 공간이 있어야 함
+            */
+           let userid = document.getElementById(`userid`).value;
+           console.log(`id : `+userid);
+           let userpw = document.getElementById(`userpw`).value;
+           console.log(`pw : `+userpw);
+           let userBirth = document.getElementById(`birth`).value;
+           console.log(`birth : `+userBirth);
+           let userPin = document.getElementById(`pin`).value;
+           console.log(`pin : `+userPin);
+           console.log(`id:${userid},pw:${userpw},birth:${birth},pin:${pin}`);
+
+            // h3 태그에 출력
+            let info = document.getElementById(`info`);
+            let str = `userid : ${userid}`;
+            // info.innerText=`userpw : ${userpw}`; // 덮어쓰기 됨
+            str += `userpw : ${userpw}`;
+            str += `birth : ${userBirth}`;
+            str += `pin : ${userPin}`;
+            info.innerText = str;
+        }
+
+        function makeList(){
+            let userid = document.getElementById(`userid`).value;
+            let userpw = document.getElementById(`userpw`).value;
+            let userBirth = document.getElementById(`birth`).value;
+            let userPin = document.getElementById(`pin`).value;
+            
+            // < 자료형 변환 >
+            // String -> 숫자로 변경
+            //      ● parseInt(변수를 정수로 변경(int 형태로 변환)) : 정수만 가능
+            //      ● Number(변수를 숫자로 변경(정수도 되고 실수도 되고))
+            userPin = parseInt(userPin);
+            userPin = Number(userPin);
+            // String -> 날짜로 변경
+            //      ● new Date()
+            userBirth = new Date(userBirth);        
+
+            // ol 태그 내부에 li로 추가하기
+            let ol = document.getElementById(`ol`);
+            let str = `<li>id : ${userid} ${typeof userid}</li>`;
+            str += `<li>pw : ${userpw} ${typeof userpw}</li>`;
+            str += `<li>birth : ${userBirth} ${typeof userBirth}</li>`;
+            str += `<li>pin : ${userPin} ${typeof userPin}</li>`;
+            ol.innerHTML = str;
+        }
+    </script>
+</body>
+</html>

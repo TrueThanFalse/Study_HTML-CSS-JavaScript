@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <style>
+        button{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <button type="button" value="7">7</button>
+            <button type="button" value="8">8</button>
+            <button type="button" value="9">9</button>
+            <button type="button" value="+">+</button>
+            <button type="button" value="c">c</button><br>
+            <button type="button" value="4">4</button>
+            <button type="button" value="5">5</button>
+            <button type="button" value="6">6</button>
+            <button type="button" value="-">-</button><br>
+            <button type="button" value="1">1</button>
+            <button type="button" value="2">2</button>
+            <button type="button" value="3">3</button>
+            <button type="button" value="*">*</button><br>
+            <button type="button" value=".">.</button>
+            <button type="button" value="0">0</button>
+            <button type="button" value="=">=</button>
+            <button type="button" value="/">/</button>
+        </div>
+        <h1 id="printResult"></h1>
+    </div>
+
+    <script>
+        const printResult = document.getElementById('printResult');
+        let outputString = '';
+        let oneElementString = [];
+        let inputNumArr = [];
+        let operatorArr = [];
+        
+        document.querySelector('.container').addEventListener('click', (e)=>{
+            const value = e.target.value;
+            
+            if(value == 'c'){
+                // 모든 변수 초기화
+                outputString = '';
+                oneElementString = [];
+                inputNumArr = [];
+                operatorArr = [];
+                printResult.innerHTML = '';
+                return;
+            }
+
+            outputString += value;
+            oneElementString.push(value);
+            printResult.innerHTML = outputString;
+
+            if(['+', '-', '*', '/'].includes(value)){
+                
+                let tmpStr ='';
+                for(let i=0; i<oneElementString.length; i++){
+                    tmpStr += oneElementString[i];
+                }
+                inputNumArr.push(Number(tmpStr));
+                operatorArr.push(value);
+                oneElementString = [];
+                return;
+            }else if(value == '='){
+                for(let i=0; i<inputNumArr.length-1; i++){
+                    calcul(i);
+                }
+                outputString += inputNumArr[inputNumArr.length-1].toString();
+                printResult.innerHTML = outputString;
+                return;
+            }
+        })
+
+        function calcul(index){
+            switch(operator[index]){
+                case '+' :
+                    inputNumArr[index+1] = inputNumArr[index] + inputNumArr[index+1];
+                    break;
+                case '-' :
+                    inputNumArr[index+1] = inputNumArr[index] - inputNumArr[index+1];
+                    break;
+                case '*' :
+                    inputNumArr[index+1] = inputNumArr[index] * inputNumArr[index+1];
+                    break;
+                case '/' :
+                    inputNumArr[index+1] = inputNumArr[index] / inputNumArr[index+1];
+                    break;
+            }
+        }
+        // eval() : 비권장 함수. (보안에 취약)
+    </script>
+</body>
+</html>

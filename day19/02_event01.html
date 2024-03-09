@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <button type="button" id="btn1">버튼 생성</button>
+    </div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+
+    <script>
+        document.getElementById('btn1').addEventListener('click',()=>{
+            document.getElementById('div2').innerHTML = `<button type="button" id="btn2">생성된 버튼</button>`;
+            document.getElementById('btn2').addEventListener('click',()=>{
+            document.getElementById('div3').innerHTML = `<h1>생성된 버튼을 클릭함</h1>`;
+        })
+        })
+    </script>
+</body>
+</html>

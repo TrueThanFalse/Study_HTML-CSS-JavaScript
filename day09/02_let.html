@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Start~!</title>
+    <!-- 
+        ● HTML, CSS, JS 들은 각각 다른 영역임
+        ● 선택자, document 같은 명령어로 인식 시켜야 연결이 됨
+    -->
+    <style>
+        /* CSS 영역 */
+    </style>
+    <script>
+        // head 내부도 스크립트 작성 가능
+        console.log("head 내부에서 작성한 스크립트입니다.");
+    </script>
+    <script src="02_let.js"></script>
+    <!--
+        href : hyper reference 의 약어 (링크 연결)
+        src : source 의 약어 (파일 연결)
+        bin : binary 의 약어
+            (binary는 '이진'이라는 의미이고 0과1로 이루어진 파일이 이 폴더에 저장됨
+            .class 파일이고 자바가상머신(JVM)이 읽을 수 있는 코드임)
+    -->
+
+</head>
+<body>
+    <!-- HTML 영역 -->
+    <h1>JavaScript 언어 사용법</h1>
+    <ol>
+        <li>
+            &lt;script&gt;&lt;/script&gt; 내부에 작성한다.
+        </li>
+        <li>
+            파일명.js 파일을 만들어서 내부에 코드를 작성 후 src="?" 경로로 불러온다.
+        </li>
+        <li>
+            head 태그 내부에 스크립트 작성도 가능함 (사용시 주의 필요)
+        </li>
+        <li>
+            body 태그 내의 가장 하단에 scripe를 위치시키고 내부에 코드를 작성함 (가장 많이 사용)
+        </li>
+        <li>
+            똑같은 파일을 여러번 연결하면 안됨
+        </li>
+        <li>
+            마지막 끝처리는 ;(세미콜론)
+        </li>
+    </ol>
+
+    <script>
+        // JS 영역
+
+        /*
+        ● JS는 비동기 통신에 최적화가 잘 되어있음
+        ● JS는 전부 함수라고 생각해도 무관함 (대부분 함수 작성임)
+        ● 스크립트 작성의 위치는 어느곳이든 가능 (파일로 연결도 가능)
+        ● 하지만 script의 데이터를 읽는 순간 해당 요소가 생성되어 있지 않으면 Error 발생
+        ● 따라서 일반적으로 body 영역의 데이터를 대상으로 하는 스크립트라면
+            body 내부 가장 하단에 작성하는 것이 Error가 발생을 방지할 수 있다.
+        ● 콘솔출력 : console.log("출력값")
+        ● 일반적으로 작음따옴표로 묶어줌
+            -> 이유 : 요소는 큰따옴표로 묶이므로 Error 방지 및 가독성 향상(구역 나눠주기)
+        ● 요소는 큰따옴표로 묶임(중요) e.g.) href="???"
+        ● 변수명 선언은 let
+        ● 백틱(``)은 백틱 내부에 변수 삽입이 가능함 (백틱의 큰 장점)
+        */
+       
+        let sum = 10;
+        console.log("처음 사용해보는 로그(큰따옴표) => "+sum);
+        console.log('처음 사용해보는 로그(작은따옴표) => '+sum);
+        console.log(`백틱을 사용하여 출력 => ${sum}`)
+        // 백틱은 변수를 삽입할 수 있다!
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나이 구하기</title>
+</head>
+<body>
+    이름 : <input type="text" id="name"><br>
+    주민번호 : <input type="number" id="rNum1">-<input type="number" id="rNum2"><br>
+    <button type="button" onclick="run()">확인</button>
+
+    <h3 id="result">
+        <!-- 이름, 생년월일, 성별, 나이를 출력 -->
+    </h3>
+
+    <script>
+        function run(){
+            let name = document.getElementById(`name`).value;
+            let rNum1 = document.getElementById(`rNum1`).value;
+            let rNum2 = document.getElementById(`rNum2`).value;
+            let gender = rNum2.charAt(0)=='1'||rNum2.charAt(0)=='3' ? '남성' : '여성';
+            let today = new Date();
+            let yearNum = today.getFullYear();
+            let age ='';
+            if(rNum2.charAt(0)=='1'||rNum2.charAt(0)=='2'){
+                age = (yearNum-rNum1.slice(0,2)-1900);
+            }else if(rNum2.charAt(0)=='3'||rNum2.charAt(0)=='4'){
+                age = (yearNum-rNum1.slice(0,2)-2000);
+            }
+            document.getElementById(`result`).innerText =
+            `이름 : ${name}, 생년월일 : ${rNum1}, 성별 : ${gender}, 나이 : 만 ${age}세`;
+        }
+    </script>
+
+이름 : <input type="text" id="name2"><br>
+주민번호 : <input type="text" id="rNum3"><br>
+<button type="button" onclick="result()">확인</button>
+
+<h3 id="result2">
+    <!-- 이름, 생년월일, 성별, 나이를 출력 -->
+</h3>
+
+    <script>
+        function result(){
+            // 오늘날짜 리턴
+            let now = new Date();
+            let name = document.getElementById(`name2`).value;
+            /*
+                주민등록번호
+                (1900+98)980101-1234567 => 1900년대생
+                (2000+01)010101-3456789 => 2000년대생
+                기준 -> 1/2 : 1900, 3/4 : 2000
+            */
+            let rNum = document.getElementById('rNum3').value;
+            console.log(rNum);
+            // 생년월일
+            let birth = rNum.substring(0,rNum.indexOf('-'));
+            console.log(birth);
+            // 성별
+            let gender = rNum.charAt(rNum.indexOf(`-`)+1);
+            let mw = (gender=='1'||gender=='3') ? '남성' : '여성';
+            // 나이
+            // 오늘날짜 연도 - 태어난 연도
+            // 2023 - (1900+98)
+            // 2023 - (2000+01)
+            let year = now.getFullYear();
+            let birthYear = Number(birth.substring(0,2));
+            let age = (gender <= 2) ? year-(1900+birthYear) : year-(2000+birthYear);
+            document.getElementById(`result2`).innerText =
+            `이름 : ${name}, 생년월일 : ${birth}, 성별 : ${mw}, 나이 : 만 ${age}세`;
+        }
+    </script>
+</body>
+</html>

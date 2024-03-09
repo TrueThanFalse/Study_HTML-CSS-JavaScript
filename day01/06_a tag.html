@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a 태그</title>
+</head>
+<body>
+    <!-- 
+        a 태그
+        => 다른 페이지로 이동하게 하는 태그, 다운로드를 가능하게 하는 태그
+        - 쌍태그로 태그 안의 글자를 클릭하면 이동하게 됨.
+
+        - href 속성
+            - 이동할 url, 값이 없다면 현재 페이지에서 새로고침 실행
+            - 속성값이 http:// 형식이면 url로 인식함(//도 url로 인식), 없으면 파일로 인식
+            - 값이 tel: 형식이면 전화번호로 연결 (모바일에서 주로 사용)
+            - 값이 mailto: 형식이면 이메일로 연결
+
+        - target 속성 (_self, _blank 속성이 가장 많이 사용됨)
+            - _self : 기본값. 현재 화면에서 링크를 새로 연결
+            - _blank : 새창을 열어서 링크를 연결
+            - _parent : 부모창에서 링크를 새로 연결
+                -> 결제창처럼 팝업창(자식창)이 뜨고 팝업창에대한 값을 반영하여 원래의 (부모창)창이 변경될 경우
+            - _top : 최고 조상에서 링크를 연결, 부모 없고 조상 없으면 _self와 동일함
+                -> 팝업창이 다중으로 뜰 경우, 선택하면 원래의 메인창에 값을 반영할 때
+
+        -download 속성
+            - 파일을 다운로드 할 경우 사용
+            - download 속성을 추가하면 링크로 이동하는 것이 아니라 해당 파일을 다운로드 하도록함
+            - href는 다운로드 할 파일 위치가 작성 되어야함
+    -->
+
+    <!-- url로 인식, 새창에서 naver.com으로 연결 -->
+    <a href="http://www.naver.com" target="_blank">naver_blank</a><br>
+    <!-- url로 인식, 현재창에서 naver.com으로 연결, 기본값이 _self -->
+    <a href="http://www.naver.com" target="_self">naver_self</a><br>
+    <a href="http://www.naver.com">naver_self</a><br>
+    <hr>
+    
+    <!-- 파일로 인식, 파일이 없으면 Error 발생 -->
+    <a href="naver.com" target="_blank">naver</a><br>
+    <!-- 파일 열기 -->
+    <a href="03_input.html" target="_blank">input 태그 연습 파일</a><br>
+    <!-- 다운로드 속성 추가 -->
+    <a href="03_input.html" target="_blank" download="">다운로드</a><br>
+    <!-- 전화로 연결 -->
+    <a href="tel:+8201012341234">문의전화</a><br>
+    <!-- 이메일로 연결 -->
+    <a href="mailto:seyeorbsla@gmail.com">메일문의</a><br>
+</body>
+</html>
